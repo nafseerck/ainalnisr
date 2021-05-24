@@ -1,4 +1,5 @@
 import 'package:ainalnisr/ColorScheme.dart';
+import 'package:ainalnisr/components/servicesbuttonbar.dart';
 import 'package:ainalnisr/screens/services/components/button.dart';
 import 'package:flutter/material.dart';
 
@@ -76,10 +77,13 @@ class _PlasteringWorksState extends State<PlasteringWorks> {
                   Row(
                     children: [
 
-                      Text(
-                        "ABOUT",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w800),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text(
+                          "ABOUT",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w800),
+                        ),
                       ),
                     ],
                   ),
@@ -88,9 +92,12 @@ class _PlasteringWorksState extends State<PlasteringWorks> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Flexible(
-                          child: Text(
-"	Plastering is a layer provide over masonry or concrete surface for the purpose of protecting wall and other concrete element against the atmospheric effect. It also provides a finished surface over the masonry that is firm and smooth hence it enhances the appearance of the building. \n 	 Our team are skilled tradesmen in various specialized applications such as lathing and plastering on wooden timbers and dry lining plasterboard from preparation to application to finishing with the approved quality work in a very affordable rate",                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w500),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 15.0),
+                            child: Text(
+"Plastering is a layer provide over masonry or concrete surface for the purpose of protecting wall and other concrete element against the atmospheric effect. It also provides a finished surface over the masonry that is firm and smooth hence it enhances the appearance of the building. \n\n 	 Our team are skilled tradesmen in various specialized applications such as lathing and plastering on wooden timbers and dry lining plasterboard from preparation to application to finishing with the approved quality work in a very affordable rate",                            style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
                           ),
                         )
                       ],
@@ -99,11 +106,12 @@ class _PlasteringWorksState extends State<PlasteringWorks> {
                 ],
               ),
             ),
-            PlasteringButton(),
 
           ],
         ),
       ),
+      bottomNavigationBar: ElectricFittingButtonNewBar(),
+
     );
   }
 }

@@ -17,7 +17,7 @@ class ElectricFittingButtonNewBar extends StatelessWidget {
       width: double.infinity,
       // double.infinity means it cove the available width
       decoration: BoxDecoration(
-        color: Colors.deepPurple,
+        color: Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(0),
           topRight: Radius.circular(0),
@@ -34,30 +34,67 @@ class ElectricFittingButtonNewBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
 
-          ElevatedButton(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
 
-            style: ElevatedButton.styleFrom(
-              primary: Colors.red, // background
-              onPrimary: Colors.white, // foreground
-            ),
-            onPressed: () { },
-            child: Text('Book Now'),
+            children: [
+              Row(
+                children: [
+                  RaisedButton(
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(80.0)),
+                    padding: EdgeInsets.all(0.0),
+                    child: Ink(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Color(0xff374ABE), Color(0xff64B6FF)],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.circular(30.0)),
+                      child: Container(
+                        constraints:
+                        BoxConstraints(maxWidth: 150.0, minHeight: 50.0),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Call Now",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 5.0,),
+                  RaisedButton(
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(80.0)),
+                    padding: EdgeInsets.all(0.0),
+                    child: Ink(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Color(0xff8cf500), Color(0xff8bba6b)],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.circular(30.0)),
+                      child: Container(
+                        constraints:
+                        BoxConstraints(maxWidth: 150.0, minHeight: 50.0),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Book Now",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-          OutlineButton(
-            shape: StadiumBorder(),
-            highlightedBorderColor: Colors.red,
-            borderSide: BorderSide(
-                width: 3,
-                color: Colors.white,
-            ),
-            onPressed: () { },
-            child: Icon(
-              Icons.phone,
-              color: Colors.black,
-              size: 24.0,
-              semanticLabel: 'Call Now',
-            ),
-          )
         ],
       ),
     );

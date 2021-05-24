@@ -24,9 +24,11 @@ dependencies:
   flutter:
     sdk: flutter
   table_calendar: ^2.2.3
-  flutter_svg: ^0.18.0
+  flutter_svg: ^0.22.0
   smooth_star_rating: ^1.0.4
   rate_my_app: ^0.7.2
+  line_awesome_flutter: ^1.0.1
+  flutter_screenutil: ^1.0.2
 
 
 
@@ -52,13 +54,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - asset/image/
-    - asset/image/1.jpg
     - asset/image/icons/
-    - asset/image/icons/Home.svg
-    - asset/image/icons/person.svg
-    - asset/image/icons/search.svg
-    - asset/image/icons/share.svg
-    - asset/image/icons/more.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -75,6 +71,17 @@ flutter:
     - family: ubuntu
       fonts:
         - asset: asset/font/Ubuntu-Regular.ttf
+    - family: CustomIcons
+      fonts:
+        - asset: asset/font/CustomIcons.ttf
+    - family: Poppins
+      fonts:
+        - asset: asset/font/Poppins/Poppins-Regular.ttf
+        - asset: asset/font/Poppins/Poppins-Medium.ttf
+          weight: 600
+        - asset: asset/font/Poppins/Poppins-Bold.ttf
+          weight: 700
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

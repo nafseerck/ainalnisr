@@ -1,6 +1,8 @@
 import 'package:ainalnisr/MainPage.dart';
 import 'package:ainalnisr/components/search_box.dart';
 import 'package:ainalnisr/screens/home/HomeMainScreen.dart';
+import 'package:ainalnisr/screens/profile/profilepage.dart';
+import 'package:ainalnisr/screens/profile/profilepage1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -66,7 +68,12 @@ class BottomNavBar extends StatelessWidget {
           ),
           IconButton(
             icon: SvgPicture.asset("asset/image/icons/person.svg"),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePageFull()),
+              );
+            },
           ),
         ],
       ),

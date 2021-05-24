@@ -1,3 +1,4 @@
+import 'package:ainalnisr/components/servicesbuttonbar.dart';
 import 'package:ainalnisr/screens/services/components/button.dart';
 import 'package:flutter/material.dart';
 import 'package:ainalnisr/ColorScheme.dart';
@@ -104,13 +105,12 @@ class _BuildingCleaningState extends State<BuildingCleaning> {
                 ],
               ),
             ),
-            BuildingServicesButton(),
-            SizedBox(
-              height: 10.0,
-            ),
+
           ],
         ),
       ),
+      bottomNavigationBar: ElectricFittingButtonNewBar(),
+
     );
   }
 }
