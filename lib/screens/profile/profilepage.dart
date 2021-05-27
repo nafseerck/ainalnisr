@@ -1,9 +1,8 @@
-import 'package:ainalnisr/MainPage.dart';
+import 'package:ainalnisr/screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:ainalnisr/widgets/constants.dart';
-import 'package:ainalnisr/profile_list_item.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -29,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       AppBarButton(
                         icon: Icons.arrow_back,
                       ),
-                      SvgPicture.asset("assets/icons/menu.svg"),
+                      SvgPicture.asset("asset/icon/menu.svg"),
                     ],
                   ),
                 ),
@@ -37,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 SizedBox(
                   height: 30,
                 ),
-                SocialIcons(),
+                // SocialIcons(),
                 SizedBox(height: 30),
                 Text(
                   'Nafseer',
@@ -91,9 +90,18 @@ class AppBarButton extends StatelessWidget {
               blurRadius: 10,
             ),
           ]),
-      child: Icon(
-        icon,
-        color: fCL,
+      child: IconButton(
+        icon: new Icon(
+          LineAwesomeIcons.
+          angle_left,
+        ),
+        highlightColor: Colors.pink,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        },
       ),
     );
   }
@@ -123,61 +131,66 @@ class AvatarImage extends StatelessWidget {
   }
 }
 
-class SocialIcons extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        SocialIcon(
-          color: Color(0xFF102397),
-          iconData: facebook,
-          onPressed: () {},
-        ),
-        SocialIcon(
-          color: Color(0xFFff4f38),
-          iconData: googlePlus,
-          onPressed: () {},
-        ),
-        SocialIcon(
-          color: Color(0xFF38A1F3),
-          iconData: twitter,
-          onPressed: () {},
-        ),
-        SocialIcon(
-          color: Color(0xFF2867B2),
-          iconData: linkedin,
-          onPressed: () {},
-        )
-      ],
-    );
-  }
-}
-
-class SocialIcon extends StatelessWidget {
-  final Color color;
-  final IconData iconData;
-  final Function onPressed;
-
-  SocialIcon({this.color, this.iconData, this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return new Padding(
-      padding: EdgeInsets.only(left: 20.0),
-      child: Container(
-        width: 45.0,
-        height: 45.0,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: color),
-        child: RawMaterialButton(
-          shape: CircleBorder(),
-          onPressed: onPressed,
-          child: Icon(iconData, color: Colors.white),
-        ),
-      ),
-    );
-  }
-}
+// class SocialIcons extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: <Widget>[
+//         SocialIcon(
+//           color: Color(0xFF102397),
+//           iconData: facebook,
+//           onPressed: () {},
+//         ),
+//         SocialIcon(
+//           color: Color(0xFFff4f38),
+//           iconData: googlePlus,
+//           onPressed: () {},
+//         ),
+//         SocialIcon(
+//           color: Color(0xFF38A1F3),
+//           iconData: twitter,
+//           onPressed: () {},
+//         ),
+//         SocialIcon(
+//           color: Color(0xFF2867B2),
+//           iconData: linkedin,
+//           onPressed: () {},
+//         )
+//       ],
+//     );
+//   }
+// }
+//
+// class SocialIcon extends StatelessWidget {
+//   final Color color;
+//   final IconData iconData;
+//   final Function onPressed;
+//
+//   SocialIcon({this.color, this.iconData, this.onPressed});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Padding(
+//       padding: EdgeInsets.only(left: 20.0),
+//       child: Container(
+//         width: 45.0,
+//         height: 45.0,
+//         decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+//         child: RawMaterialButton(
+//           shape: CircleBorder(),
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (context) => HomeScreen()),
+//             );
+//           },
+//           child: Icon(iconData, color: Colors.white),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class ProfileListItems extends StatelessWidget {
   @override
@@ -233,7 +246,8 @@ class PurchaseHistoryButton extends StatelessWidget {
                         onPressed: () {},
                       ),
                       Text(
-                        "Purchase History",
+                        "Order History",
+                        textAlign: TextAlign.right,
                         style: kTitleTextStyle.copyWith(
                             fontWeight: FontWeight.w500, fontFamily: "Poppins"),
                       ),

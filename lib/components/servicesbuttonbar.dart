@@ -1,8 +1,8 @@
-import 'package:ainalnisr/MainPage.dart';
-import 'package:ainalnisr/components/search_box.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:ainalnisr/ColorScheme.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ainalnisr/screens/services/buildingcleaning.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ElectricFittingButtonNewBar extends StatelessWidget {
   const ElectricFittingButtonNewBar({
@@ -33,15 +33,20 @@ class ElectricFittingButtonNewBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: [
               Row(
                 children: [
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      const url = 'tel:+971 56815 6107';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(80.0)),
                     padding: EdgeInsets.all(0.0),
@@ -55,7 +60,7 @@ class ElectricFittingButtonNewBar extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30.0)),
                       child: Container(
                         constraints:
-                        BoxConstraints(maxWidth: 150.0, minHeight: 50.0),
+                            BoxConstraints(maxWidth: 150.0, minHeight: 50.0),
                         alignment: Alignment.center,
                         child: Text(
                           "Call Now",
@@ -65,9 +70,18 @@ class ElectricFittingButtonNewBar extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 5.0,),
+                  SizedBox(
+                    width: 5.0,
+                  ),
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      const url = 'http://www.indusre.com';
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(80.0)),
                     padding: EdgeInsets.all(0.0),
@@ -81,7 +95,7 @@ class ElectricFittingButtonNewBar extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30.0)),
                       child: Container(
                         constraints:
-                        BoxConstraints(maxWidth: 150.0, minHeight: 50.0),
+                            BoxConstraints(maxWidth: 150.0, minHeight: 50.0),
                         alignment: Alignment.center,
                         child: Text(
                           "Book Now",

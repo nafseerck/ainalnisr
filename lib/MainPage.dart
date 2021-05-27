@@ -1,5 +1,4 @@
 import 'package:ainalnisr/button/button.dart';
-import 'package:ainalnisr/main.dart';
 import 'package:ainalnisr/widgets/services.dart';
 import 'package:ainalnisr/widgets/extras.dart';
 import 'package:ainalnisr/widgets/frequency.dart';

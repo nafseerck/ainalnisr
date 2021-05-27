@@ -1,8 +1,10 @@
 import 'package:ainalnisr/MainPage.dart';
 import 'package:ainalnisr/components/search_box.dart';
 import 'package:ainalnisr/screens/home/HomeMainScreen.dart';
-import 'package:ainalnisr/screens/profile/profilepage.dart';
+import 'package:ainalnisr/screens/homepage.dart';
 import 'package:ainalnisr/screens/profile/profilepage1.dart';
+import 'package:ainalnisr/screens/search/searchpage.dart';
+import 'package:ainalnisr/screens/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -37,14 +39,19 @@ class BottomNavBar extends StatelessWidget {
         children: <Widget>[
           IconButton(
             icon: Icon(Icons.home_filled),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+            },
           ),
           IconButton(
             icon: SvgPicture.asset("asset/image/icons/search.svg"),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SearchBox()),
+                MaterialPageRoute(builder: (context) => SearchPageFull()),
               );
             },
           ),
@@ -62,7 +69,7 @@ class BottomNavBar extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomeMainScreen()),
+                MaterialPageRoute(builder: (context) => ServicesPagesFull()),
               );
             },
           ),

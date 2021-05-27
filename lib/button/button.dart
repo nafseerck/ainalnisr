@@ -1,8 +1,7 @@
 import 'package:ainalnisr/main.dart';
-import 'package:ainalnisr/screens/services/components/button.dart';
+import 'package:ainalnisr/screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:ainalnisr/ColorScheme.dart';
-import 'package:ainalnisr/CalendarPage.dart';
 
 class NextButton extends StatefulWidget {
   @override
@@ -23,7 +22,7 @@ class _NextButtonState extends State<NextButton> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
                 );
               },
               child: Container(

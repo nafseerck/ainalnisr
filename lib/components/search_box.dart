@@ -1,9 +1,6 @@
 import 'package:ainalnisr/ColorScheme.dart';
-import 'package:ainalnisr/components/appbar.dart';
-import 'package:ainalnisr/main.dart';
 import 'package:ainalnisr/screens/homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchBox extends StatelessWidget {
   final ValueChanged<String> onChanged;
