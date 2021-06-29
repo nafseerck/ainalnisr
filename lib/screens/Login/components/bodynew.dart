@@ -6,6 +6,7 @@ import 'package:ainalnisr/components/text_field_container.dart';
 
 import 'package:ainalnisr/Screens/Signup/signup_screen.dart';
 import 'package:ainalnisr/components/already_have_an_account_acheck.dart';
+import 'package:ainalnisr/helperfunctions/helper.dart';
 import 'package:ainalnisr/screens/homepage.dart';
 
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:ainalnisr/Screens/Login/components/background.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ainalnisr/helperfunctions/helper.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -24,6 +26,7 @@ class _LoginState extends State<Login> {
   bool _isLoading = false;
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
+  String usernametext;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
@@ -43,7 +46,7 @@ class _LoginState extends State<Login> {
               ),
               SizedBox(height: size.height * 0.03),
               SvgPicture.asset(
-                "assets/icons/login.svg",
+                "asset/icons/login.svg",
                 height: size.height * 0.35,
               ),
               SizedBox(height: size.height * 0.03),
@@ -58,7 +61,7 @@ class _LoginState extends State<Login> {
                       Icons.email,
                       color: kPrimaryColor,
                     ),
-                    hintText: "Enter Your Email",
+                    hintText: "Enter Your Username",
                     border: InputBorder.none,
                   ),
                   validator: (String value) {
@@ -104,10 +107,13 @@ class _LoginState extends State<Login> {
                 child: RaisedButton(
                   color: Colors.redAccent,
                   onPressed: () {
-                    setState(() {
-                      _isLoading = true;
-                    });
+                    // setState(() {
+                    //   _isLoading = true;
+                    // });
+                    // signIn(user.text, pass.text);
                     login();
+                    print(login);
+                    // userDetails(user.text,  pass.text);
                     // signIn(user.text, pass.text);
                     print("Successfull Login");
                     // if (_formKey.currentState.validate()) {
@@ -145,14 +151,70 @@ class _LoginState extends State<Login> {
     );
   }
 
+  // Future login() async {
+  //
+  //   String savedUserNameNew;
+  //   var url =
+  //       "http://ireproperty.com/promo/ainalnisr-database/getdata.php";
+  //   // var url =
+  //   //     "http://192.168.3.94/IndusProjects/NewFlutterLoginRegister/login.php";
+  //   var jsonResponse = null;
+  //   var response = await http
+  //       .post(url, body: {"username": user.text, "password": pass.text});
+  //   var datas = json.decode(response.body);
+  //   print(datas);
+  //   savedUserNameNew = user.text;
+  //   print(savedUserNameNew);
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.setString('username', user.text);
+  //   print(prefs.get('username'));
+  //
+  //   var data = json.decode(response.body);
+  //   print('ancdddd');
+  //   print(data);
+  //   if (data == "Success") {
+  //     Fluttertoast.showToast(
+  //       msg: "Login Successfull ",
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //       timeInSecForIosWeb: 1,
+  //       backgroundColor: Colors.red,
+  //       textColor: Colors.white,
+  //       fontSize: 16.0,
+  //     );
+  //     print(data);
+  //     Navigator.push(
+  //         context, MaterialPageRoute(builder: (context) => HomeScreen(usernametext: savedUserNameNew)));
+  //   } else {
+  //     Fluttertoast.showToast(
+  //       msg: "Please check your Credentials ",
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //       timeInSecForIosWeb: 1,
+  //       backgroundColor: Colors.red,
+  //       textColor: Colors.white,
+  //       fontSize: 16.0,
+  //     );
+  //   }
+  // }
+
   Future login() async {
-    var url = "http://192.168.3.94/IndusProjects/NewFlutterLoginRegister/login.php";
-    var response = await http.post(url,body : {
-      "username" : user.text,
-      "password" : pass.text
-    });
-    var data = json.decode(response.body);
-    if(data == "Success") {
+
+    String savedUserNameNew;
+
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    Map data = {"username": user.text, "password": pass.text};
+    var jsonResponse = null;
+    var response = await http.post(
+        "https://www.ireproperty.com/promo/ainalnisr-database/login.php",
+        body: data);
+    savedUserNameNew = user.text;
+
+
+    var datas = json.decode(response.body);
+    print('ancdddd');
+    print(datas);
+    if (datas == "Success") {
       Fluttertoast.showToast(
         msg: "Login Successfull ",
         toastLength: Toast.LENGTH_SHORT,
@@ -162,12 +224,12 @@ class _LoginState extends State<Login> {
         textColor: Colors.white,
         fontSize: 16.0,
       );
+      print(data);
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
-    }
-      else {
+          context, MaterialPageRoute(builder: (context) => HomeScreen(usernametext: savedUserNameNew)));
+    } else {
       Fluttertoast.showToast(
-        msg: "Username and Password Incorrect ",
+        msg: "Please check your Credentials ",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
@@ -179,15 +241,42 @@ class _LoginState extends State<Login> {
   }
 
 
-  signIn(String _email, _password) async {
+
+
+  Future userDetails(String username, String password) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    Map data = {'email': _email, 'password': _password};
+    Map data = {'username': username, 'password': password};
+    var jsonResponse = null;
+    // var response = await http.post(
+    //     "http://192.168.3.94/IndusProjects/NewFlutterLoginRegister/getdata.php",
+    //     body: data);
+    var response = await http.post(
+        "http://ireproperty.com/promo/ainalnisr-database/register.php",
+        body: data);
+
+
+    if (response.statusCode == 200) {
+      jsonResponse = json.decode(response.body);
+      print(jsonResponse);
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      print(response.body);
+    }
+  }
+
+  signIn(String _email, _password) async {
+    String savedUserNameNew;
+
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    Map data = {"username": user.text, "password": pass.text};
     var jsonResponse = null;
     var response = await http.post(
         "https://www.ireproperty.com/promo/propertygram/newdatas.php",
         body: data);
-
-
+    savedUserNameNew = user.text;
+    print('this is ' + savedUserNameNew);
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
       print(jsonResponse);
@@ -197,8 +286,7 @@ class _LoginState extends State<Login> {
         });
         sharedPreferences.setString("token", jsonResponse['token']);
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-                builder: (BuildContext context) => HomeScreen()),
+            MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
             (Route<dynamic> route) => false);
       }
     } else {
@@ -207,7 +295,6 @@ class _LoginState extends State<Login> {
       });
       print(response.body);
     }
-
 
   }
 }

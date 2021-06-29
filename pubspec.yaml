@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: any
   flushbar: ^1.10.4
   fluttertoast: ^8.0.7
+  parse_server_sdk: any
 
 
 

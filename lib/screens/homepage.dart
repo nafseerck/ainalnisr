@@ -1,6 +1,8 @@
 import 'package:ainalnisr/ColorScheme.dart';
 import 'package:ainalnisr/components/appbar.dart';
 import 'package:ainalnisr/components/homeScreenOnlyAppBar.dart';
+import 'package:ainalnisr/helperfunctions/helper.dart';
+import 'package:ainalnisr/screens/Login/components/bodynew.dart';
 import 'package:ainalnisr/screens/profile/profilepage1.dart';
 import 'package:ainalnisr/screens/services/buildingcleaning.dart';
 import 'package:ainalnisr/screens/services/carpentrycontracting.dart';
@@ -12,28 +14,47 @@ import 'package:ainalnisr/widgets/fadeanimations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:ainalnisr/components/bottom_navbar.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ainalnisr/screens/Login/login_screen.dart';
 class HomeScreen extends StatelessWidget {
+  final String usernametext;
+
+  HomeScreen({Key key, this.usernametext
+  }): super(key: key);
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: homeScreenOnlyAppBar(context),
-      body: MyHomePage(),
-      bottomNavigationBar: BottomNavBar(),
+      body: MyHomePage(recievedUserName: usernametext,),
+      bottomNavigationBar: BottomNavBar(recievedUserName: usernametext,),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  final String recievedUserName;
 
+
+  MyHomePage({Key key, this.title, this.savedUserName, this.recievedUserName}) : super(key: key);
+final String savedUserName ;
   final String title;
+
+
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
+
+
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,8 +107,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(height: 50.0),
                     Padding(
                       padding: EdgeInsets.only(left: 15.0),
-                      child: Text(
-                        'Hello, Nafseer',
+                      // child: Text('Hello,',
+                        child: Text('Hello, ' + widget.recievedUserName,
                         style: TextStyle(
                             fontFamily: 'Quicksand',
                             fontSize: 28.0,
@@ -423,4 +444,17 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     return val;
   }
+
+
+
+
+
+
+
+
+}
+
+
+class Constants{
+  static String myName =  "";
 }

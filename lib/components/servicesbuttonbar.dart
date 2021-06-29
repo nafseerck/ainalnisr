@@ -5,7 +5,9 @@ import 'package:ainalnisr/screens/services/buildingcleaning.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ElectricFittingButtonNewBar extends StatelessWidget {
+  final int bookurl;
   const ElectricFittingButtonNewBar({
+    this.bookurl,
     Key key,
   }) : super(key: key);
 
@@ -40,7 +42,7 @@ class ElectricFittingButtonNewBar extends StatelessWidget {
                 children: [
                   RaisedButton(
                     onPressed: () async {
-                      const url = 'tel:+971 56815 6107';
+                      const url = 'tel:+971544781212';
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {
@@ -75,7 +77,9 @@ class ElectricFittingButtonNewBar extends StatelessWidget {
                   ),
                   RaisedButton(
                     onPressed: () async {
-                      const url = 'http://www.indusre.com';
+                      // const url = bookurl;
+                      const url =
+                          'https://wa.me/971544781212/?text=Hello+I+Would+Like+To+Know+more+about+Ain+Al+Nisr+Services';
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {

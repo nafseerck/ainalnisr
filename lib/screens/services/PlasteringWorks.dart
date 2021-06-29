@@ -26,7 +26,7 @@ class _PlasteringWorksState extends State<PlasteringWorks> {
           children: [
             Container(
               // height: 600,
-              height: MediaQuery.of(context).size.height * 0.75,
+              height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               decoration: BoxDecoration(

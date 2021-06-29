@@ -29,6 +29,7 @@ class _BuildingCleaningState extends State<BuildingCleaning> {
         child: Column(
           children: [
             Container(
+              // height: 1000,
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(

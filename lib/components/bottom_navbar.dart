@@ -9,8 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomNavBar extends StatelessWidget {
+  final String recievedUserName;
   const BottomNavBar({
     Key key,
+    this.recievedUserName,
   }) : super(key: key);
 
   @override
@@ -42,12 +44,12 @@ class BottomNavBar extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => HomeScreen(usernametext: 'Nafseer')),
               );
             },
           ),
           IconButton(
-            icon: SvgPicture.asset("asset/image/icons/search.svg"),
+            icon: Icon(Icons.search_rounded),
             onPressed: () {
               Navigator.push(
                 context,
@@ -65,7 +67,7 @@ class BottomNavBar extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: SvgPicture.asset("asset/image/icons/notification.svg"),
+            icon: Icon(Icons.miscellaneous_services),
             onPressed: () {
               Navigator.push(
                 context,
@@ -74,7 +76,7 @@ class BottomNavBar extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: SvgPicture.asset("asset/image/icons/person.svg"),
+            icon: Icon(Icons.person),
             onPressed: () {
               Navigator.push(
                 context,

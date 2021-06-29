@@ -1,4 +1,5 @@
 import 'package:ainalnisr/components/servicesbuttonbar.dart';
+import 'package:ainalnisr/screens/services/components/button.dart';
 import 'package:flutter/material.dart';
 import 'package:ainalnisr/ColorScheme.dart';
 
@@ -25,6 +26,7 @@ class _WallpaperFixingState extends State<WallpaperFixing> {
         child: Column(
           children: [
             Container(
+              height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -52,10 +54,9 @@ class _WallpaperFixingState extends State<WallpaperFixing> {
                                 image: DecorationImage(
                                   image: AssetImage('asset/image/9.jpg'),
                                   fit: BoxFit.cover,
-
                                 ),
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(20)),
+                                    BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
                             SizedBox(
@@ -93,8 +94,8 @@ class _WallpaperFixingState extends State<WallpaperFixing> {
                       children: <Widget>[
                         Flexible(
                           child: Text(
-"Wallpaper streamlines your entire aesthetic and pulls together your look adding a unique blend of color, texture and depth. This isn't to say we don't love paint. With so many amazing hues to choose from, paint can be a great option to add interesting character to your home. \n We offer wallpaper our customers the best Wallpaper Fixing / Wallpaper installation services in UAE at low cost, competitive and affordable installation rates. Wallpapers are one of the easiest and quickest solutions of renovating, designing and redecorating your villa, apartment, home or office with so much designs available in all shades, colors, designs and are compatible with almost everything. Our team are expert fixing wallpaper in your premises give us a call to prove to you our finished product."
-    ,                            style: TextStyle(
+                            "Wallpaper streamlines your entire aesthetic and pulls together your look adding a unique blend of color, texture and depth. This isn't to say we don't love paint. With so many amazing hues to choose from, paint can be a great option to add interesting character to your home. \n We offer wallpaper our customers the best Wallpaper Fixing / Wallpaper installation services in UAE at low cost, competitive and affordable installation rates. Wallpapers are one of the easiest and quickest solutions of renovating, designing and redecorating your villa, apartment, home or office with so much designs available in all shades, colors, designs and are compatible with almost everything. Our team are expert fixing wallpaper in your premises give us a call to prove to you our finished product.",
+                            style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.w500),
                           ),
                         )
@@ -104,13 +105,10 @@ class _WallpaperFixingState extends State<WallpaperFixing> {
                 ],
               ),
             ),
-          
           ],
         ),
       ),
       bottomNavigationBar: ElectricFittingButtonNewBar(),
-
-
     );
   }
 }

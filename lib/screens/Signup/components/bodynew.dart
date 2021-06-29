@@ -17,7 +17,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
-  // TextEditingController _phone = TextEditingController();
+  TextEditingController email = TextEditingController();
   // TextEditingController _password = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -70,7 +70,7 @@ class _SignUpState extends State<SignUp> {
               //email
               // TextFieldContainer(
               //   child: TextFormField(
-              //     controller: _email,
+              //     controller: email,
               //     keyboardType: TextInputType.text,
               //     cursorColor: kPrimaryColor,
               //     decoration: InputDecoration(
@@ -206,21 +206,15 @@ class _SignUpState extends State<SignUp> {
 
   Future registrationUser() async {
     // url to registration php script
-    var apiUrl = "http://192.168.3.94/IndusProjects/NewFlutterLoginRegister/register.php";
-    //json maping user entered details
-    Map mapeddate = {
-      "username": user.text,
-      "password": pass.text,
-      // 'phone': _phone.text,
-      // 'password': _password.text
-    };
-    //send  data using http post to our php code
-    http.Response reponse = await http.post(apiUrl, body: mapeddate);
-    //getting response from php code, here
-    var data = jsonDecode(reponse.body);
+    Map data = {"username": user.text, "password": pass.text};
+    var jsonResponse = null;
+    var response = await http.post(
+        "http://ireproperty.com/promo/ainalnisr-database/register.php",
+        body: data);
+    var datas = json.decode(response.body);
     print("DATA: $data");
 
-    if (data == "Error") {
+    if (datas == "Error") {
       Fluttertoast.showToast(
         msg: "This User Already Exist ",
         toastLength: Toast.LENGTH_SHORT,
@@ -230,9 +224,9 @@ class _SignUpState extends State<SignUp> {
         textColor: Colors.white,
         fontSize: 16.0,
       );
-    } else {
+    } else{
       Fluttertoast.showToast(
-        msg: "Registration Success ",
+        msg: "Registration Success",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,

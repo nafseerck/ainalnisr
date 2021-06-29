@@ -26,6 +26,8 @@ class _FalseCeilingState extends State<FalseCeiling> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
