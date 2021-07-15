@@ -179,7 +179,7 @@ class _SignUpState extends State<SignUp> {
                   color: Colors.redAccent,
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      registrationUser();
+                      registerUser();
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => LoginScreen()),
@@ -224,7 +224,7 @@ class _SignUpState extends State<SignUp> {
         textColor: Colors.white,
         fontSize: 16.0,
       );
-    } else{
+    } else {
       Fluttertoast.showToast(
         msg: "Registration Success",
         toastLength: Toast.LENGTH_SHORT,
@@ -234,6 +234,54 @@ class _SignUpState extends State<SignUp> {
         textColor: Colors.white,
         fontSize: 16.0,
       );
+    }
+  }
+
+  void registerUser() async {
+    var url = "https://www.ireproperty.com/promo/ainalnisr-database/signup.php";
+    var data = {
+      "username": user.text,
+      "password": pass.text,
+    };
+    var res = await http.post(url, body: data);
+    print(data);
+    print(res);
+    print(jsonDecode(res.body));
+    if (jsonDecode(res.body) == "account already exists") {
+      Fluttertoast.showToast(
+        msg: "Accounts Already Exists, Please Login",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+
+    }
+    else {
+      if(jsonDecode(res.body) == "true"){
+        Fluttertoast.showToast(
+          msg: "Accounts Created",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      }
+      else {
+        Fluttertoast.showToast(
+          msg: "Error",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      }
     }
   }
 }

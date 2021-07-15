@@ -148,7 +148,7 @@ SizedBox(
             ),
             InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(usernametext: "Guest",)));
               },
               child: Text(
                 "Skip this Step",

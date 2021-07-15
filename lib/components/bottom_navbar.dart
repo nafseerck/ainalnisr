@@ -1,10 +1,12 @@
 import 'package:ainalnisr/MainPage.dart';
 import 'package:ainalnisr/components/search_box.dart';
+import 'package:ainalnisr/screens/enquiry/enquiry.dart';
 import 'package:ainalnisr/screens/home/HomeMainScreen.dart';
 import 'package:ainalnisr/screens/homepage.dart';
 import 'package:ainalnisr/screens/profile/profilepage1.dart';
 import 'package:ainalnisr/screens/search/searchpage.dart';
 import 'package:ainalnisr/screens/services/services.dart';
+import 'package:ainalnisr/widgets/currentlocation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -44,7 +46,8 @@ class BottomNavBar extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen(usernametext: 'Nafseer')),
+                MaterialPageRoute(
+                    builder: (context) => HomeScreen(usernametext: 'Nafseer')),
               );
             },
           ),
@@ -53,7 +56,7 @@ class BottomNavBar extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SearchPageFull()),
+                MaterialPageRoute(builder: (context) => EnquiryScreen()),
               );
             },
           ),

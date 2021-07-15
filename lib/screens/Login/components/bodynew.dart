@@ -199,7 +199,6 @@ class _LoginState extends State<Login> {
   // }
 
   Future login() async {
-
     String savedUserNameNew;
 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -209,7 +208,6 @@ class _LoginState extends State<Login> {
         "https://www.ireproperty.com/promo/ainalnisr-database/login.php",
         body: data);
     savedUserNameNew = user.text;
-
 
     var datas = json.decode(response.body);
     print('ancdddd');
@@ -225,8 +223,12 @@ class _LoginState extends State<Login> {
         fontSize: 16.0,
       );
       print(data);
+      print(datas);
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen(usernametext: savedUserNameNew)));
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  HomeScreen(usernametext: savedUserNameNew)));
     } else {
       Fluttertoast.showToast(
         msg: "Please check your Credentials ",
@@ -240,9 +242,6 @@ class _LoginState extends State<Login> {
     }
   }
 
-
-
-
   Future userDetails(String username, String password) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Map data = {'username': username, 'password': password};
@@ -253,7 +252,6 @@ class _LoginState extends State<Login> {
     var response = await http.post(
         "http://ireproperty.com/promo/ainalnisr-database/register.php",
         body: data);
-
 
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
@@ -295,6 +293,5 @@ class _LoginState extends State<Login> {
       });
       print(response.body);
     }
-
   }
 }
